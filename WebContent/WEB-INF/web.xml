@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://java.sun.com/xml/ns/javaee" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd" metadata-complete="true" version="3.0">
+  <display-name>Forum</display-name>
+  
+  <servlet>
+    <servlet-name>Forum</servlet-name>
+    <servlet-class>se.fidde.fourchen.controller.servlets.ForumServlet</servlet-class>
+  </servlet>
+  
+  <servlet-mapping>
+    <servlet-name>Forum</servlet-name>
+    <url-pattern>/Forum.servlet</url-pattern>
+  </servlet-mapping>
+  
+  <servlet>
+    <servlet-name>Thread</servlet-name>
+    <servlet-class>se.fidde.fourchen.controller.servlets.ThreadServlet</servlet-class>
+  </servlet>
+  
+  <servlet-mapping>
+    <servlet-name>Thread</servlet-name>
+    <url-pattern>/Thread.servlet</url-pattern>
+  </servlet-mapping>
+  
+<!-- Filter -->
+  <filter>
+  	<filter-name>AdminFilter</filter-name>
+  	<filter-class>se.fidde.fourchen.controller.filter.AdminFilter</filter-class>
+  </filter>
+  
+  <filter-mapping>
+  	<filter-name>AdminFilter</filter-name>
+  	<url-pattern>*.servlet</url-pattern>
+  </filter-mapping>
+  
+<!-- Error -->		
+  <error-page>
+    <error-code>404</error-code>
+    <location>/WEB-INF/jsp/errorPage.jsp</location>
+  </error-page>
+  <error-page>
+    <exception-type>java.lang.Throwable</exception-type>
+    <location>/WEB-INF/jsp/errorPage.jsp</location>
+  </error-page>
+ 
+</web-app>
